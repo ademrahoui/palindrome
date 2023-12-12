@@ -1,0 +1,31 @@
+function IsPalindrome(word: string): boolean;
+BEGIN
+  { Base case: if the length of the word is less than or equal to 1, it's a palindrome }
+  if Length(word) <= 1 then
+    IsPalindrome := True
+  else
+  begin
+    { Compare the first and last characters }
+    if word[1] = word[Length(word)] then
+      { Recursively call IsPalindrome with the substring excluding the first and last characters }
+      IsPalindrome := IsPalindrome(Copy(word, 2, Length(word) - 2))
+    else
+      IsPalindrome := False; { If the first and last characters are different, it's not a palindrome }
+  END;
+END;
+
+VAR
+  word1, word2, word3, word4, word5: string;
+BEGIN
+  word1 := 'gag';
+  word2 := 'kayak';
+  word3 := 'php';
+  word4 := 'radar';
+  word5 := 'hello';
+
+  Writeln(word1, ' is a palindrome: ', IsPalindrome(word1));
+  Writeln(word2, ' is a palindrome: ', IsPalindrome(word2));
+  Writeln(word3, ' is a palindrome: ', IsPalindrome(word3));
+  Writeln(word4, ' is a palindrome: ', IsPalindrome(word4));
+  Writeln(word5, ' is a palindrome: ', IsPalindrome(word5));
+END
